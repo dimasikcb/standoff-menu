@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>GOOSE STRIKE — 3D Выживание</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+
+<!-- ===== HUD ===== -->
+<div class="hud3d" id="hud">
+  <div class="hud-top-left">
+    <div class="hud-gold"><span class="hg-ico">◉</span><span id="hudGold">0</span> <em>G</em></div>
+    <div class="hud-rate">+1 G <span>в секунду</span></div>
+  </div>
+
+  <div class="hud-top-center">
+    <div class="hud-timer" id="hudTimer">00:00</div>
+    <div class="hud-enemies">ВОЛНА <b id="hudWave">1</b> · ОСТАЛОСЬ <b id="hudEnemies">0</b></div>
+    <div class="hud-kills">УБИТО: <b id="hudKills">0</b></div>
+  </div>
+
+  <div class="hud-top-right">
+    <div class="hud-zone" id="hudZone">НА ЗЕМЛЕ</div>
+    <button class="hud-gear" id="btnGear" title="Настройки">⚙</button>
+  </div>
+
+  <!-- прицел -->
+  <div class="crosshair" id="crosshair"><span></span><span></span><span></span><span></span></div>
+
+  <!-- индикатор лазания -->
+  <div class="climb-hint" id="climbHint">▲ ЛЕЗЬ: ДЕРЖИ W</div>
+
+  <!-- радар угрозы -->
+  <div class="threat" id="threat">
+    <div class="threat-bar"><span id="threatFill"></span></div>
+    <div class="threat-label" id="threatLabel">БЛИЖАЙШИЙ МЕМ: —</div>
+  </div>
+
+  <!-- здоровье -->
+  <div class="hud-bottom-left">
+    <div class="hp-line">
+      <span class="hp-tag">HP</span>
+      <div class="hp-bar"><i id="hudHpFill"></i></div>
+      <b id="hudHp">100</b>
+    </div>
+  </div>
+
+  <!-- патроны -->
+  <div class="hud-bottom-right">
+    <div class="ammo-box" id="hudAmmoBox">
+      <div class="ammo-name" id="hudWeapon">ГУСЬ-9</div>
+      <div class="ammo-nums"><b id="hudAmmo">30</b><span>/</span><em id="hudReserve">150</em></div>
+    </div>
+  </div>
+
+  <!-- попадание по мему -->
+  <div class="hitmarker" id="hitmarker"><span></span><span></span><span></span><span></span></div>
+
+  <!-- лента убийств -->
+  <div class="killfeed" id="killFeed"></div>
+
+  <!-- баннер волны -->
+  <div class="wave-banner" id="waveBanner"></div>
+
+  <!-- красная вспышка урона -->
+  <div class="dmg-vignette" id="dmgVignette"></div>
+</div>
+
+<!-- ===== ПАУЗА ===== -->
+<div class="overlay" id="pauseOverlay">
+  <div class="ov-box">
+    <div class="ov-title">ПАУЗА</div>
+    <div class="ov-sub" id="pauseStats">Голды накоплено: 0</div>
+    <button class="ov-start" id="btnResume">ПРОДОЛЖИТЬ</button>
+    <button class="ov-mini" id="btnSettings">НАСТРОЙКИ</button>
+    <button class="ov-mini" id="btnFullscreen">ВО ВЕСЬ ЭКРАН</button>
+    <a class="ov-back" href="game.html?autostart=1" target="_blank" rel="noopener" id="lockOpen">ОТКРЫТЬ В ОТДЕЛЬНОМ ОКНЕ</a>
+    <a class="ov-back" href="index.html">Выйти в меню</a>
+  </div>
+</div>
+
+<!-- ===== GAME OVER ===== -->
+<div class="overlay" id="overOverlay">
+  <div class="ov-box over">
+    <div class="ov-logo" style="color:#e03b3b">☠</div>
+    <div class="ov-title" style="color:#e03b3b">GAME OVER</div>
+    <div class="ov-sub" id="overKiller">Тебя догнал мем</div>
+
+    <div class="ov-stats">
+      <div class="ovs"><b id="overWave">1</b><span>ВОЛНА</span></div>
+      <div class="ovs"><b id="overMemes">0</b><span>МЕМОВ УБИТО</span></div>
+      <div class="ovs"><b id="overGold">0</b><span>ГОЛДЫ</span></div>
+      <div class="ovs"><b id="overTime">00:00</b><span>ВРЕМЯ</span></div>
+    </div>
+
+    <button class="ov-start" id="btnRestart">РЕСПАВН</button>
+    <a class="ov-back" href="index.html">← В МЕНЮ</a>
+  </div>
+</div>
+
+<!-- ===== НАСТРОЙКИ ===== -->
+<div class="overlay" id="settingsOverlay">
+  <div class="ov-box st-box">
+    <div class="ov-title" style="font-size:19px;letter-spacing:4px">НАСТРОЙКИ</div>
+
+    <div class="st-sect">УПРАВЛЕНИЕ</div>
+    <div class="ov-keys">
+      <div class="k"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>ходить</span></div>
+      <div class="k"><kbd>Space</kbd><span>прыжок · держи — банихоп</span></div>
+      <div class="k"><kbd>Shift</kbd><span>бег</span></div>
+      <div class="k">Мышь<span>осмотр</span></div>
+      <div class="k">ЛКМ<span>огонь</span></div>
+      <div class="k"><kbd>R</kbd><span>перезарядка</span></div>
+      <div class="k"><kbd>Q</kbd><kbd>E</kbd><span>поворот</span></div>
+      <div class="k"><kbd>PgUp</kbd><kbd>PgDn</kbd><span>наклон</span></div>
+      <div class="k"><kbd>W</kbd> у лестницы, глядя вверх<span>лезть вверх</span></div>
+      <div class="k"><kbd>S</kbd><span>лезть вниз</span></div>
+      <div class="k"><kbd>Space</kbd><span>прыжок / сорваться</span></div>
+      <div class="k"><kbd>Esc</kbd><span>пауза</span></div>
+    </div>
+    <div class="st-note">Волны мемов: зачистил всех — короткая передышка и следующая волна.
+      За убийство дают голду, между волнами восстанавливается часть HP и патронов.
+      Под землёй — бункер на <b>−5</b>: центральная шахта, люк в полу дома 1,
+      траншея с западного края + два наклонных спуска.</div>
+
+    <div class="st-sect">МЫШЬ</div>
+    <div class="st-row">
+      <label for="sensRange">Чувствительность</label>
+      <input type="range" id="sensRange" min="20" max="300" step="5">
+      <b id="sensVal">1.00×</b>
+    </div>
+    <div class="st-row">
+      <label>Доворот у края окна</label>
+      <button class="st-toggle" id="btnEdgeTurn">ВКЛ</button>
+    </div>
+    <div class="st-note">Без захвата курсора он упирается в границу окна и обзор останавливается.
+      В крайней полосе экрана камера сама продолжает поворот — с постоянной скоростью, без разгона.</div>
+
+    <button class="ov-start" id="btnSettingsClose">НАЗАД</button>
+  </div>
+</div>
+
+<!-- ===== ЗАГРУЗКА ===== -->
+<div class="overlay show" id="loadOverlay">
+  <div class="ov-box">
+    <div class="ov-logo">▲</div>
+    <div class="ov-title">ЗАГРУЗКА</div>
+    <div class="load-bar"><span id="loadFill"></span></div>
+    <div class="ov-sub" id="loadTip">Инициализация...</div>
+  </div>
+</div>
+
+<!-- ===== ОШИБКА ===== -->
+<div class="overlay" id="errorOverlay">
+  <div class="ov-box error">
+    <div class="ov-logo" style="color:#e03b3b">⚠</div>
+    <div class="ov-title" style="color:#e03b3b" id="errTitle">СБОЙ</div>
+    <div class="ov-sub" id="errMsg">Что-то пошло не так</div>
+    <pre class="err-detail" id="errDetail"></pre>
+    <button class="ov-start" id="btnRetry" style="background:#e03b3b;color:#fff">ПОВТОРИТЬ</button>
+    <a class="ov-back" href="index.html">← Вернуться в меню</a>
+  </div>
+</div>
+
+<script src="lib/three.min.js"></script>
+<script src="memes/data.js"></script>
+<script src="game.js?v=36"></script>
+</body>
+</html>

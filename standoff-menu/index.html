@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOOSE STRIKE — Лобби</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ЗАГРУЗКА -->
+<div class="boot" id="boot">
+  <div class="boot-mark">▲</div>
+  <div class="boot-name">GOOSE STRIKE</div>
+  <div class="boot-sub">СЕЗОН 2 · МЕМ-ВОЙНА</div>
+  <div class="boot-bar"><span id="bootFill"></span></div>
+  <div class="boot-status" id="bootStatus">Загрузка...</div>
+</div>
+
+<!-- СЦЕНА: агент на фоне + логотип -->
+<div class="scene">
+  <div class="scene-bg"></div>
+  <div class="scene-logo">
+    <svg viewBox="0 0 200 200">
+      <polygon points="100,10 190,175 10,175" fill="none" stroke="#fff" stroke-width="3"/>
+      <polygon points="100,52 152,148 48,148" fill="#fff" opacity=".5"/>
+    </svg>
+  </div>
+  <div class="scene-grid"></div>
+  <div class="scene-figure">
+    <svg viewBox="0 0 340 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="j1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7d2a20"/><stop offset="55%" stop-color="#5e1d16"/><stop offset="100%" stop-color="#3a100c"/>
+        </linearGradient>
+        <linearGradient id="p1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5b6169"/><stop offset="100%" stop-color="#2e3238"/>
+        </linearGradient>
+        <linearGradient id="s1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1d2024"/><stop offset="100%" stop-color="#0c0d0f"/>
+        </linearGradient>
+      </defs>
+      <ellipse cx="170" cy="586" rx="112" ry="13" fill="#000" opacity=".5"/>
+      <!-- ноги -->
+      <path d="M132 350 L124 570 L156 570 L162 370 Z" fill="url(#p1)"/>
+      <path d="M208 350 L216 570 L184 570 L178 370 Z" fill="url(#p1)"/>
+      <path d="M120 564 h40 v16 h-46 z" fill="#141619"/>
+      <path d="M180 564 h40 v16 h-46 z" fill="#141619"/>
+      <path d="M126 386 h48 v14 h-52 z" fill="#3a3f45"/>
+      <path d="M180 386 h48 v14 h-52 z" fill="#3a3f45"/>
+      <!-- куртка -->
+      <path d="M124 176 L216 176 L228 366 L112 366 Z" fill="url(#j1)"/>
+      <path d="M124 176 L216 176 L222 246 L118 246 Z" fill="#8c3226"/>
+      <path d="M158 176 L182 176 L182 366 L158 366 Z" fill="#4a1611"/>
+      <!-- ремень -->
+      <path d="M112 344 L228 344 L228 366 L112 366 Z" fill="#2a2018"/>
+      <path d="M162 342 h22 v24 h-22 z" fill="#4a3a26"/>
+      <!-- броня/разгрузка -->
+      <path d="M136 200 L204 200 L212 300 L128 300 Z" fill="#26292e" opacity=".0"/>
+      <!-- руки -->
+      <path d="M122 186 L84 340 L108 348 L136 210 Z" fill="url(#j1)"/>
+      <path d="M218 186 L256 332 L232 342 L204 210 Z" fill="url(#j1)"/>
+      <path d="M78 330 L110 350 L102 384 L70 364 Z" fill="#1a1c20"/>
+      <path d="M258 322 L228 344 L236 380 L266 356 Z" fill="#1a1c20"/>
+      <!-- оружие в руках -->
+      <path d="M96 352 L246 320 L252 340 L104 376 Z" fill="#1d2126"/>
+      <path d="M120 366 L140 404 L128 412 L108 376 Z" fill="#15181b"/>
+      <path d="M232 312 L262 306 L266 322 L236 328 Z" fill="#2c3138"/>
+      <path d="M100 356 L104 372 L96 374 L92 358 Z" fill="#3a4048"/>
+      <!-- плечи -->
+      <path d="M118 178 L152 166 L160 200 L124 210 Z" fill="#6b261d"/>
+      <path d="M222 178 L188 166 L180 200 L216 210 Z" fill="#6b261d"/>
+      <!-- шея -->
+      <path d="M152 138 L188 138 L190 178 L150 178 Z" fill="#20242a"/>
+      <!-- балаклава / маска -->
+      <path d="M138 78 L202 78 L210 150 L130 150 Z" fill="#d6d3cd"/>
+      <path d="M138 78 L202 78 L204 92 L136 92 Z" fill="#bdbab4"/>
+      <path d="M140 96 L200 96 L202 122 L138 122 Z" fill="#1c1f23"/>
+      <path d="M142 126 L198 126 L200 142 L140 142 Z" fill="#e6e3dd"/>
+      <path d="M140 118 L200 118 L200 128 L140 128 Z" fill="#c9c6c0"/>
+      <!-- очки -->
+      <path d="M142 128 L166 128 L164 140 L144 140 Z" fill="#0f1114"/>
+      <path d="M176 128 L200 128 L198 140 L178 140 Z" fill="#0f1114"/>
+      <path d="M166 132 h10 v6 h-10 z" fill="#1c1f23"/>
+      <!-- руки в перчатках -->
+      <path d="M186 300 L214 306 L216 330 L188 326 Z" fill="#14161a"/>
+      <path d="M124 300 L96 308 L94 332 L122 326 Z" fill="#14161a"/>
+      <!-- контур -->
+      <path d="M138 78 L202 78 L210 150 L190 178 L216 176 L228 366 L216 570 L184 570 L178 370 L162 370 L156 570 L124 570 L112 366 L124 176 L150 178 L130 150 Z"
+            fill="none" stroke="#ff6b00" stroke-width="1" opacity=".22"/>
+    </svg>
+  </div>
+  <div class="scene-vig"></div>
+</div>
+
+<!-- ЛЕВАЯ ИКОНОЧНАЯ ПАНЕЛЬ -->
+<nav class="rail">
+  <div class="rail-top">
+    <button class="rail-btn rail-play active" id="navPlay" title="Главная">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+  <div class="rail-mid">
+    <button class="rail-btn" id="navInv" title="Инвентарь">
+      <svg viewBox="0 0 24 24"><path d="M4 6h3l1.4-2h7.2L17 6h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zm8 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+      <span class="rail-badge" id="invBadge">0</span>
+    </button>
+    <button class="rail-btn" id="navGun" title="Оружие">
+      <svg viewBox="0 0 24 24"><path d="M2 10h14l3-2v4h3v2h-3v1l-2 1v-2h-1l-1 3h-2l1-3H9v2H7v-2H2z"/></svg>
+    </button>
+    <button class="rail-btn" id="navCase" title="Кейсы">
+      <svg viewBox="0 0 24 24"><path d="M3 8h18v2H3zm1-3h16l1 3H3zM4 11h16v9H4zm6 2h4v2h-4z"/></svg>
+    </button>
+    <button class="rail-btn" id="navSkull" title="События">
+      <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8v5l2 2v3h4v-2h4v2h4v-3l2-2v-5a8 8 0 0 0-8-8zM9 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+    </button>
+    <button class="rail-btn" id="navChart" title="Статистика">
+      <svg viewBox="0 0 24 24"><path d="M4 20h16v2H2V2h2zm3-3V9h3v8zm5 0V5h3v12zm5 0v-6h3v6z"/></svg>
+    </button>
+  </div>
+  <div class="rail-bot">
+    <button class="rail-btn" id="navGear" title="Настройки">
+      <svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 4-2.3-.6a7 7 0 0 0-.7-1.7l1.3-2-1.4-1.4-2 1.3a7 7 0 0 0-1.7-.7L13.6 4h-2l-.6 2.3a7 7 0 0 0-1.7.7l-2-1.3L5.9 7.1l1.3 2a7 7 0 0 0-.7 1.7L4 11.4v2l2.3.6a7 7 0 0 0 .7 1.7l-1.3 2 1.4 1.4 2-1.3a7 7 0 0 0 1.7.7l.6 2.3h2l.6-2.3a7 7 0 0 0 1.7-.7l2 1.3 1.4-1.4-1.3-2a7 7 0 0 0 .7-1.7l2.3-.6z"/></svg>
+    </button>
+    <button class="rail-btn" id="navChat" title="Сообщения">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H8l-5 4V5a1 1 0 0 1 1-1z"/></svg>
+    </button>
+    <button class="rail-btn" id="navGlobe" title="Язык">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2c1.8 0 3.4 4.5 3.4 8S13.8 20 12 20s-3.4-4.5-3.4-8S10.2 4 12 4z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ВЕРХ ПРАВА: БАЛАНСЫ -->
+<div class="topright">
+  <div class="bal bal-s">
+    <span class="bal-ico">S</span>
+    <span class="bal-val" id="silverVal">94</span>
+  </div>
+  <div class="bal bal-g" id="goldBox">
+    <span class="bal-ico">G</span>
+    <span class="bal-val" id="goldVal">12 720</span>
+  </div>
+</div>
+
+<!-- ПРОФИЛЬ СЛЕВА СВЕРХУ -->
+<div class="profile-chip" id="openProfile">
+  <div class="pc-av">🥚</div>
+  <div class="pc-meta">
+    <div class="pc-name">XeNz1 <span class="pc-badge">ID 39481726</span></div>
+    <div class="pc-lvl">
+      <div class="pc-lvl-bar"><span></span></div>
+      <span class="pc-lvl-num">23</span>
+    </div>
+  </div>
+</div>
+
+<!-- ДРУЗЬЯ -->
+<aside class="friends">
+  <div class="fr-head">
+    <span class="fr-title">Мои друзья</span>
+    <span class="fr-new">+172</span>
+    <span class="fr-new">+9</span>
+    <span class="fr-cnt" id="frOnline">3</span>
+  </div>
+  <div class="fr-list" id="frList"></div>
+  <div class="fr-foot" id="frFind">
+    <span class="fr-search-ico">🔍</span> Найти друга
+  </div>
+</aside>
+
+<!-- ПРАВАЯ КОЛОНКА -->
+<div class="rightcol">
+  <div class="banner">
+    <span class="bn-free">FREE PASS</span>
+    <div class="bn-text">
+      <div class="bn-title">BREAKOUT</div>
+      <div class="bn-sub">11 СЕЗОН</div>
+    </div>
+    <div class="bn-tri">▲</div>
+    <div class="bn-art">🧤</div>
+  </div>
+
+  <div class="two-btns">
+    <button class="sq-btn" id="navEvents"><span class="sq-ico">📅</span>СОБЫТИЯ</button>
+    <button class="sq-btn" id="navPass"><span class="sq-ico">🎖️</span>COMMANDER PASS</button>
+  </div>
+
+  <div class="banner-shop" id="openShop">
+    <span class="bs-art">🧤</span>
+    <span class="bs-text">Перейти в <b>Магазин</b></span>
+  </div>
+</div>
+
+<!-- НИЗ ПРАВА -->
+<div class="playzone">
+  <button class="mode-btn" id="openModes">ВЫБЕРИТЕ РЕЖИМ</button>
+  <button class="play-btn" id="btnPlay">ИГРАТЬ</button>
+</div>
+
+<!-- ===== ГЛАВНАЯ ===== -->
+<div class="modal" id="modalHome">
+  <div class="modal-box">
+    <div class="mb-head">
+      <span class="mb-title">ГЛАВНАЯ</span>
+      <button class="mb-close" data-close>✕</button>
+    </div>
+    <div class="mb-content">
+      <div class="home-wrap">
+        <div class="home-main">
+          <div class="home-kicker">СЕЗОН 2 · МЕМ-ВОЙНА</div>
+          <div class="home-title">ЗАРАБОТАЙ<br><span>И ВЫЖИВИ</span></div>
+          <div class="home-sub">Кликай Голду, крути кейсы, рискуй в казино — и беги от мемов на 3D-арене.</div>
+          <button class="big-play" id="bigPlay">ИГРАТЬ</button>
+          <div class="home-stats">
+            <div><b id="statGold">0</b><span>ГОЛДЫ ВСЕГО</span></div>
+            <div><b id="statMemes">0</b><span>МЕМОВ</span></div>
+            <div><b>04:12</b><span>РЕКОРД ВЫЖИВАНИЯ</span></div>
+          </div>
+        </div>
+        <div class="side-stack">
+          <button class="earn-btn" id="btnClick"><span class="earn-ico">👆</span><span>ТАПНУТЬ <b>+1 G</b></span></button>
+          <button class="earn-btn" id="btnAd"><span class="earn-ico">🎬</span><span>РЕКЛАМА <b>+100 G</b></span></button>
+          <button class="earn-btn" id="btnBoost"><span class="earn-ico">⚡</span><span>БУСТ <b>x2 / 5 МИН</b></span></button>
+          <div class="boost-state" id="boostState">Буст неактивен</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ИНВЕНТАРЬ ===== -->
+<div class="modal" id="modalInv">
+  <div class="modal-box">
+    <div class="mb-head">
+      <span class="mb-title">ИНВЕНТАРЬ</span>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-size:11px;color:var(--txt-dim)">Мемов: <b id="invTotal" style="color:var(--orange)">0</b></span>
+        <button class="card-sell" style="width:auto;padding:8px 14px" id="btnSellAll">ПРОДАТЬ ВСЁ</button>
+        <button class="mb-close" data-close>✕</button>
+      </div>
+    </div>
+    <div class="mb-content">
+      <div class="inv-grid" id="invGrid"></div>
+      <div class="empty" id="invEmpty">
+        <div class="empty-ico">▣</div>
+        <div class="empty-txt">Инвентарь пуст</div>
+        <div class="empty-sub">Открой Шедевро-кейс, чтобы получить мемы</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== МАГАЗИН ===== -->
+<div class="modal" id="modalShop">
+  <div class="modal-box">
+    <div class="mb-head">
+      <span class="mb-title">МАГАЗИН</span>
+      <button class="mb-close" data-close>✕</button>
+    </div>
+    <div class="mb-body">
+      <div class="mb-tabs">
+        <button class="mb-tab active" data-pane="s-cases">ШЕДЕВРО-КЕЙС</button>
+        <button class="mb-tab" data-pane="s-casino">КАЗИНО</button>
+        <button class="mb-tab" data-pane="s-bank">БАНК</button>
+      </div>
+      <div class="mb-content">
+
+        <div class="mb-pane active" id="s-cases">
+          <div class="shop-wrap">
+            <div class="case-visual">
+              <div class="case-art">▣</div>
+              <div class="case-name">ШЕДЕВРО-КЕЙС</div>
+              <div class="case-price">◉ 100 G</div>
+              <button class="case-open" id="btnOpenCase">ОТКРЫТЬ КЕЙС</button>
+              <div class="rar-legend">
+                <div class="rl" style="color:var(--common)">COMMON · 50%</div>
+                <div class="rl" style="color:var(--rare)">RARE · 27%</div>
+                <div class="rl" style="color:var(--epic)">EPIC · 15%</div>
+                <div class="rl" style="color:var(--arcana)">ARCANA · 6%</div>
+                <div class="rl" style="color:var(--gold)">GOLD · 2%</div>
+              </div>
+            </div>
+            <div class="roulette-wrap">
+              <div class="roulette-head">ВЫПАДЕНИЕ</div>
+              <div class="roulette">
+                <div class="rou-strip" id="rouStrip"></div>
+                <div class="rou-marker"></div>
+              </div>
+              <div class="rou-result" id="rouResult">Крути кейс, чтобы увидеть мем</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-pane" id="s-casino">
+          <div class="casino-main">
+            <div class="slider-bank">
+              Ставка: <b id="betVal">100</b> G
+              <div class="bet-quick">
+                <button data-bet="10">10</button>
+                <button data-bet="50">50</button>
+                <button data-bet="100">100</button>
+                <button data-bet="500">500</button>
+                <button data-bet="all">ВСЁ</button>
+              </div>
+            </div>
+            <div class="mult-select" id="multSelect">
+              <button data-mult="1.5">x1.5</button>
+              <button data-mult="2" class="active">x2</button>
+              <button data-mult="3">x3</button>
+              <button data-mult="5">x5</button>
+              <button data-mult="10">x10</button>
+            </div>
+            <div class="track" id="track">
+              <div class="zone-green" id="zoneGreen"></div>
+              <div class="needle" id="needle"></div>
+            </div>
+            <div class="track-scale"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+            <div class="casino-info">
+              <div class="ci"><span>Шанс победы</span><b id="winChance">50%</b></div>
+              <div class="ci"><span>Потенциал</span><b id="potential">200 G</b></div>
+            </div>
+            <button class="casino-btn" id="btnSpin">ЗАПУСТИТЬ БЕГУНОК</button>
+            <div class="casino-log" id="casinoLog">— Сделай ставку и выбери множитель —</div>
+          </div>
+        </div>
+
+        <div class="mb-pane" id="s-bank">
+          <div class="sect-title">ПОПОЛНЕНИЕ ГОЛДЫ</div>
+          <div class="bank-wrap">
+            <div class="bank-item"><div class="bi-gold">◉ 100</div><div class="bi-price">99 ₽</div><div class="bi-note">Базовый пакет</div></div>
+            <div class="bank-item"><div class="bi-tag">+15%</div><div class="bi-gold">◉ 550</div><div class="bi-price">490 ₽</div><div class="bi-note">Популярный</div></div>
+            <div class="bank-item"><div class="bi-tag">ХИТ</div><div class="bi-gold">◉ 1 200</div><div class="bi-price">990 ₽</div><div class="bi-note">Лучшая цена</div></div>
+            <div class="bank-item"><div class="bi-gold">◉ 6 500</div><div class="bi-price">4 990 ₽</div><div class="bi-note">Мега-набор</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ПРОФИЛЬ ===== -->
+<div class="modal" id="modalProfile">
+  <div class="modal-box">
+    <div class="mb-head">
+      <span class="mb-title">ПРОФИЛЬ</span>
+      <button class="mb-close" data-close>✕</button>
+    </div>
+    <div class="mb-body">
+      <div class="mb-tabs">
+        <button class="mb-tab active" data-pane="p-general">ОБЩАЯ</button>
+        <button class="mb-tab" data-pane="p-detail">ПОДРОБНАЯ СТАТИСТИКА</button>
+        <button class="mb-tab" data-pane="p-history">ИСТОРИЯ МАТЧЕЙ</button>
+      </div>
+      <div class="mb-content">
+        <div class="mb-pane active" id="p-general">
+          <div class="prof-top">
+            <div class="prof-av">🥚</div>
+            <div class="prof-meta">
+              <h3>XeNz1</h3>
+              <div class="prof-id">ID 39481726 · в игре с 2021</div>
+              <div class="prof-rank">
+                <div class="rank-chip"><span class="rank-ico">✦</span> ЛЕГЕНДА</div>
+                <div class="rank-chip"><span class="rank-ico">◈</span> ЗОЛОТО III</div>
+              </div>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><b>18ч 42м</b><span>ВСЕГО В ИГРЕ</span></div>
+            <div class="stat"><b>247</b><span>МАТЧЕЙ</span></div>
+            <div class="stat"><b>1.42</b><span>K/D</span></div>
+            <div class="stat"><b>58%</b><span>ПОБЕД</span></div>
+          </div>
+          <div class="sect-title">МЕДАЛИ</div>
+          <div class="medals">
+            <div class="medal">🥇</div><div class="medal">🎯</div><div class="medal">🔥</div>
+            <div class="medal">💀</div><div class="medal">⚡</div><div class="medal">🛡️</div>
+          </div>
+        </div>
+        <div class="mb-pane" id="p-detail">
+          <div class="sect-title">СЕЗОН 2</div>
+          <table class="table">
+            <tr><th>РЕЖИМ</th><th>МАТЧИ</th><th>ПОБЕДЫ</th><th>K/D</th></tr>
+            <tr><td>Соревновательный</td><td>84</td><td class="win">49</td><td>1.51</td></tr>
+            <tr><td>Союзники</td><td>63</td><td class="win">37</td><td>1.38</td></tr>
+            <tr><td>Командный бой</td><td>100</td><td class="win">55</td><td>1.36</td></tr>
+          </table>
+        </div>
+        <div class="mb-pane" id="p-history">
+          <table class="table">
+            <tr><th>КАРТА</th><th>СЧЁТ</th><th>K/D</th><th>ИТОГ</th></tr>
+            <tr><td>Prison</td><td>13:9</td><td>24/16</td><td class="win">ПОБЕДА</td></tr>
+            <tr><td>Sandstone</td><td>9:13</td><td>18/21</td><td class="lose">ПОРАЖЕНИЕ</td></tr>
+            <tr><td>Province</td><td>7:5</td><td>14/9</td><td class="win">ПОБЕДА</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== РЕЖИМЫ ===== -->
+<div class="modal" id="modalModes">
+  <div class="modal-box">
+    <div class="mb-head">
+      <span class="mb-title">ВЫБОР РЕЖИМА</span>
+      <button class="mb-close" data-close>✕</button>
+    </div>
+    <div class="mb-content">
+      <div class="mode-groups">
+        <div>
+          <div class="mode-col-title">ОБЩИЕ</div>
+          <div class="mode-card"><div class="mode-thumb">🏆</div><div class="mode-info"><h4>СОРЕВНОВАТЕЛЬНЫЙ</h4><p>5v5 · с рейтингом</p></div></div>
+          <div class="mode-card locked"><div class="mode-thumb">🤝</div><div class="mode-info"><h4>СОЮЗНИКИ</h4><p>2v2 · с рейтингом</p><span class="lock">🔒 Откроется на 15 уровне</span></div></div>
+          <div class="mode-card"><div class="mode-thumb">💥</div><div class="mode-info"><h4>КОМАНДНЫЙ БОЙ</h4><p>5v5 · до 50 очков</p></div></div>
+        </div>
+        <div>
+          <div class="mode-col-title">ДРУГИЕ · ПРИВАТНАЯ ИГРА</div>
+          <div class="mode-card"><div class="mode-thumb">🔥</div><div class="mode-info"><h4>БУНТ</h4><p>Каждый за себя · модификаторы</p></div></div>
+          <div class="mode-card"><div class="mode-thumb">⚔️</div><div class="mode-info"><h4>ДУЭЛЬ</h4><p>1v1 · до 10 побед</p></div></div>
+          <div class="mode-card"><div class="mode-thumb">🎓</div><div class="mode-info"><h4>ТРЕНИРОВКА</h4><p>Бесконечная покупка</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="memes/data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
